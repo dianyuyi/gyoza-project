@@ -12,7 +12,7 @@ export async function getSheetList(sheetName: string) {
 
     const sheets = google.sheets({ version: 'v4', auth: jwt })
     const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SPREADSHEET_ID,
+      spreadsheetId: process.env.SPREADSHEET_ID_2,
       range: sheetName, // sheet name
     })
 
@@ -20,16 +20,10 @@ export async function getSheetList(sheetName: string) {
     if (rows.length) {
       return rows.map((row) => ({
         id: row[0],
-        name_tw: row[1],
-        name_en: row[2],
-        image: row[3],
-        image_webp: row[4] ?? '',
-        thumb: row[5] ?? '',
-        tags: row[6],
-        date: row[7],
-        description_tw: row[8],
-        description_en: row[9],
-        url: row[10] ?? '',
+        name: row[1],
+        note: row[2] ?? '',
+        price: row[3],
+        image: row[4] ?? '',
       }))
     }
   } catch (err) {

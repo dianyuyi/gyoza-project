@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css'
 import tw from 'twin.macro'
 import Button from '../src/components/Button'
 import Link from 'next/link'
-import { getSheetList } from '../src/utils/sheet'
 
 const testStyles = {
   // Move long class sets out of jsx to keep it scannable
@@ -28,29 +27,17 @@ const Home: NextPage = () => {
       <div css={testStyles.container({ hasBackground: true })}>
         <div tw="flex flex-col justify-center h-10 gap-y-5">
           <p>Test</p>
-          {/* {JSON.stringify(data[1])} */}
-          {/* <p>Test2</p> */}
         </div>
         <Button variant="primary">Submit</Button>
-        <Link href="/user">
-          <a>Go to User Page</a>
+        <Link href="/noodle">
+          <a>Go to Noodle Page</a>
         </Link>
-        <Link href="/item">
-          <a>Go to Item Page</a>
+        <Link href="/gyoza">
+          <a>Go to Gyoza Page</a>
         </Link>
       </div>
     </div>
   )
 }
-// export async function getStaticProps() {
-//   const sheetName = 'Sheet1'
-//   const data = await getSheetList(sheetName)
-//   console.log(data[9])
-//   return {
-//     props: {
-//       data: data, // remove sheet header
-//     },
-//   }
-// }
 
 export default Home

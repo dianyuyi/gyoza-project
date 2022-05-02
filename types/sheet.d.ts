@@ -1,22 +1,16 @@
 declare namespace SheetGlobal {
-  interface Work {
+  interface MenuItem {
     id: number
-    name_tw: string
-    name_en: string
+    name: string
+    note: string
+    price: number
     image: string
-    image_webp: string
-    thumb: string
-    tags: string
-    date: string
-    description_tw: string
-    description_en: string
-    url: string
   }
   type sheetName = string
-  type Works = Array<Work>
+  type MenuItems = Array<MenuItem>
 
   interface SheetState {
-    sheetData: Works | null
+    sheetData: MenuItems | null
     isLoading: boolean
     errors: Errors
   }
