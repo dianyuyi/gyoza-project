@@ -57,7 +57,18 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
-
+    'import/no-anonymous-default-export': [
+      'error',
+      {
+        allowArray: false,
+        allowArrowFunction: false,
+        allowAnonymousClass: false,
+        allowAnonymousFunction: false,
+        allowCallExpression: true, // The true value here is for backward compatibility
+        allowLiteral: false,
+        allowObject: true,
+      },
+    ],
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-namespace': 'off',

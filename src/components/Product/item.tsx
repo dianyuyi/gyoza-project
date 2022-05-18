@@ -18,17 +18,18 @@ const Item = styled.div`
 `
 
 interface Props {
-  sheetData: SheetGlobal.MenuItems | null
+  sheetData: SheetGlobal.ProductItems | null
 }
 
-const GyozaDetail: FC<Props> = ({ sheetData }) => {
+const ProductDetail: FC<Props> = ({ sheetData }) => {
   return (
     <>
       <Intro>餃子</Intro>
       <CardContainer title="餃子菜單" loading={false}>
-        {sheetData.map((row) => {
+        {sheetData.map((row, index) => {
           return (
-            <div key={row.id}>
+            <div key={index}>
+              <Item>{row.group}</Item>
               <Item>{row.id}</Item>
               <Item>{row.name}</Item>
               <Item>{row.note ?? 'none'}</Item>
@@ -43,4 +44,4 @@ const GyozaDetail: FC<Props> = ({ sheetData }) => {
   )
 }
 
-export default GyozaDetail
+export default ProductDetail
