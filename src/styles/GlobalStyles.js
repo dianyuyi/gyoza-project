@@ -1,11 +1,14 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import tw, { theme, GlobalStyles as BaseStyles } from 'twin.macro'
+import { Normalize } from 'styled-normalize'
+import { GlobalStyles as BaseStyles } from 'twin.macro'
 
 const CustomStyles = createGlobalStyle`
   body {
-    -webkit-tap-highlight-color: ${theme`colors.purple.500`};
-    ${tw`antialiased`}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Shippori Mincho', serif;
   }
 `
 
@@ -13,7 +16,7 @@ const GlobalStyles = () => (
   <>
     <BaseStyles />
     <CustomStyles />
+    <Normalize />
   </>
 )
-
 export default GlobalStyles

@@ -2,6 +2,7 @@
 module.exports = {
   trailingSlash: true,
   reactStrictMode: true,
+  dangerouslyAllowSVG: true,
   images: {
     domains: [
       'images.unsplash.com',

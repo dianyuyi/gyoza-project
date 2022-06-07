@@ -21,6 +21,6 @@
     "noImplicitAny": false,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/styles/GlobalStyles.js"],
   "exclude": ["node_modules", ".next", "dist"]
 }

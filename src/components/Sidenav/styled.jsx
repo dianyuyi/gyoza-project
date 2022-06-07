@@ -2,17 +2,17 @@ import tw, { styled, css } from 'twin.macro'
 import variables from 'src/styles/variables'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import LinkButton from 'src/components/common/LinkButton'
+// import LinkButton from 'src/components/common/LinkButton'
 
 export const SideNav = styled(motion.nav)`
   display: none;
   position: fixed;
   top: 0;
-  /* left: 0; */
   right: 0;
   bottom: 0;
   width: 100vw;
   z-index: 101;
+
   @media screen and (max-width: ${variables.breakpointPhone}) {
     display: block;
     pointer-events: none;
@@ -22,20 +22,10 @@ export const SideNav = styled(motion.nav)`
 export const SideNavBtn = styled.button(() => [
   tw`outline-none border-none	select-none	absolute cursor-pointer rounded-full bg-transparent	pointer-events-auto`,
   css`
-    /* outline: none;
-    border: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    cursor: pointer;
-    position: absolute; */
     top: 14px;
     right: calc(10vw - 38px);
     width: 50px;
     height: 50px;
-    /* border-radius: 50%;
-    background: transparent;
-    pointer-events: fill; */
   `,
 ])
 
@@ -64,11 +54,14 @@ export const SideNavList = styled(motion.ul)`
   width: 100%;
   padding: 3rem 0;
   margin-top: 10%;
+
   &.preventClick {
     pointer-events: none;
+
     > li > a {
       pointer-events: none;
     }
+
     > li > button {
       pointer-events: none;
     }
@@ -78,11 +71,11 @@ export const SideNavList = styled(motion.ul)`
 export const SideNavListItem = styled(motion.li)`
   padding: 1rem;
 `
+
 export const SideNavLink = styled(Link)`
   color: ${variables.primary};
   text-decoration: none;
   padding: 0 0.5rem;
-  /* font-family: "creamfont-1.1 regular"; */
   font-size: 1.25rem;
   font-weight: 300;
   cursor: pointer;
@@ -97,6 +90,7 @@ export const SideNavLngBtn = styled.button`
   font-size: 1.15rem;
   padding-bottom: 2px;
   pointer-events: fill;
+
   &.active {
     border-bottom: solid 2px ${variables.primary};
     padding-bottom: 0;

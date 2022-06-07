@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SideNavList } from './styles'
+import { SideNavList } from './styled'
 import { MenuItem } from './MenuItem'
 
 const variants = {
@@ -10,7 +10,13 @@ const variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 }
-export const Navigation = ({ isSideOpen, toggle }) => (
+
+interface Props {
+  toggle?: () => void
+  isSideOpen?: boolean
+}
+
+export const Navigation = ({ isSideOpen, toggle }: Props) => (
   <SideNavList variants={variants} className={`${isSideOpen ? '' : 'preventClick'}`}>
     <MenuItem toggle={toggle} />
   </SideNavList>

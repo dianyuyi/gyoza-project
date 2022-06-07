@@ -5,12 +5,23 @@
   "plugins": [
     "stylelint-order"
   ],
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-styled-components",
-    "stylelint-config-prettier"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-styled-components"],
+  "customSyntax": "postcss-scss",
   "rules": {
-    "value-keyword-case": null
+    "selector-type-case": ["lower", { "ignoreTypes": ["/^\\$\\w+/"] }],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/-styled-mixin/", "/^\\$\\w+/"] }],
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
+    "value-no-vendor-prefix": [true,
+      {"ignoreValues": ["box", "mask-image", "mask-repeat"]
+    }],
+    "declaration-colon-newline-after": null,
+    "rule-empty-line-before": ["always", {
+      "except": ["first-nested", "after-single-line-comment"]
+    }],
+    "no-eol-whitespace": true,
+    "string-quotes": "single",
+    "selector-pseudo-element-colon-notation": "single",
+    "selector-class-pattern": "^[a-z][A-Za-z0-9-]+$",
+    "selector-id-pattern": "^[a-z][A-Za-z0-9-]+$"
   }
 }

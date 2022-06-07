@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SideNavListItem, SideNavLink } from './styles'
+import { SideNavListItem, SideNavLink } from './styled'
 
 const variants = {
   open: {
@@ -18,7 +18,11 @@ const variants = {
   },
 }
 
-export const MenuItem = ({ toggle }) => {
+interface Props {
+  toggle?: () => void
+}
+
+export const MenuItem = ({ toggle }: Props) => {
   return (
     <>
       <SideNavListItem
