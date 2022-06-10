@@ -1,7 +1,7 @@
 import { google } from 'googleapis'
 import getSheetFormat from 'src/utils/getSheetFormat'
 
-interface Props {
+type Props = {
   sheetName?: string
 }
 

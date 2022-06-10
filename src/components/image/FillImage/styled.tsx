@@ -1,10 +1,11 @@
 import tw, { styled, css } from 'twin.macro'
 
-interface Props {
+type BoxProps = {
   width: number | string
   height: number | string
 }
-export const Box = styled.div(({ width, height }: Props) => [
+
+export const Box = styled.div(({ width, height }: BoxProps) => [
   tw`relative w-auto h-auto`,
   width &&
     css`

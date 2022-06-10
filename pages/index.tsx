@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps } from 'next'
 import tw from 'twin.macro'
 import Link from 'next/link'
 import Sidenav from 'src/components/sidenav'
@@ -32,26 +32,20 @@ const Home: NextPage<Props> = ({ sheetData }: Props) => {
         <div tw="flex flex-col justify-center h-10 gap-y-5">
           <p>{JSON.stringify(sheetData)}</p>
         </div>
-        <div>Submit</div>
-        <Link href="/noodle">
-          <a>Go to Noodle Page</a>
-        </Link>
-        <Link href="/gyoza">
-          <a>Go to Gyoza Page</a>
-        </Link>
+        <div>Index</div>
       </div>
     </div>
   )
 }
 
-export async function getStaticProps() {
-  const sheetName = 'Products'
-  const data = await getSheetList(sheetName)
-  return {
-    props: {
-      sheetData: data, // remove sheet header
-    },
-  }
-}
+// export const getStaticProps: GetStaticProps = async () => {
+//   const sheetName = 'Products'
+//   const data = await getSheetList(sheetName)
+//   return {
+//     props: {
+//       sheetData: data, // remove sheet header
+//     },
+//   }
+// }
 
 export default Home

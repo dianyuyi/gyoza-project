@@ -1,12 +1,51 @@
-import React, { FC } from 'react'
-import { AppProps } from 'next/app'
-import GlobalStyles from 'src/styles/GlobalStyles'
-import Layout from 'src/components/common/Layout'
+import React, { FC, useEffect } from 'react'
+import type { AppProps, NextWebVitalsMetric } from 'next/app'
+import Head from 'next/head'
+import { AnimatePresence } from 'framer-motion'
+import { DefaultSeo } from 'next-seo'
 
-const App: FC<AppProps> = ({ Component, pageProps }) => (
-  <Layout>
-    <GlobalStyles />
-    <Component {...pageProps} />
-  </Layout>
-)
+import GlobalStyles from 'src/styles/GlobalStyles'
+import Header from 'src/components/header'
+import Footer from 'src/components/footer'
+
+declare const window: any
+
+export function reportWebVitals({ id, name, label, value }: NextWebVitalsMetric): void {
+  // window.gtag('event', name, {
+  //   event_category: label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
+  //   value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+  //   event_label: id, // id unique to current page load
+  //   non_interaction: true, // avoids affecting bounce rate.
+  // })
+}
+const App: FC<AppProps> = ({ Component, pageProps, router }) => {
+  // const url = `https://wallis.dev${router.route}`
+
+  return (
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+      </Head>
+      <DefaultSeo
+        titleTemplate="%s - James Wallis"
+        openGraph={{
+          type: 'website',
+          locale: 'zh_TW',
+          // url,
+          description: 'Test page',
+          site_name: 'Gyoza',
+          images: [],
+        }}
+        // canonical={url}
+      />
+      <GlobalStyles />
+      <Header />
+      <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
+        <Component {...pageProps} />
+        {/* <Component {...pageProps} canonical={url} key={url} /> */}
+      </AnimatePresence>
+      <Footer />
+    </>
+  )
+}
 export default App

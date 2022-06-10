@@ -24,8 +24,9 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicAttributes<T> extends DOMAttributes<T> {
-      // as?: string
       variant?: string
+      width?: number | string
+      height?: number | string
     }
   }
 }
