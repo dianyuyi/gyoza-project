@@ -35,5 +35,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jest', 'prettier'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-unused-vars': 0,
+  },
 }

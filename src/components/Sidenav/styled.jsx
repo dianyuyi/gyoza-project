@@ -1,98 +1,53 @@
-import tw, { styled, css } from 'twin.macro'
+import tw, { styled } from 'twin.macro'
 import variables from 'src/styles/variables'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-// import LinkButton from 'src/components/common/LinkButton'
+import { NextLink } from 'src/components/link'
 
 export const SideNav = styled(motion.nav)`
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  z-index: 101;
-
-  @media screen and (max-width: ${variables.breakpointPhone}) {
-    display: block;
-    pointer-events: none;
-  }
+  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-50`}
 `
 
-export const SideNavBtn = styled.button(() => [
-  tw`outline-none border-none	select-none	absolute cursor-pointer rounded-full bg-transparent	pointer-events-auto`,
-  css`
-    top: 14px;
-    right: calc(10vw - 38px);
-    width: 50px;
-    height: 50px;
-  `,
-])
-
-export const SideNavLogo = styled(motion.div)`
-  position: relative;
-  top: 18px;
-  left: 18px;
-  padding: 0.5rem;
-  pointer-events: fill;
+export const SideNavBtn = styled.button`
+  ${tw`outline-none border-none	select-none	absolute cursor-pointer rounded-full bg-transparent	pointer-events-auto top-2 right-[calc(10vw - 48px)] w-[50px] h-[50px]`}
 `
+
 export const SiderBg = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
+  ${tw`absolute top-0 right-0 bottom-0 w-full bg-white`}
 `
 
 export const SideNavList = styled(motion.ul)`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 3rem 0;
-  margin-top: 10%;
+  ${tw`absolute flex flex-col justify-center items-center w-full py-6 mt-[10%]`}
 
   &.preventClick {
-    pointer-events: none;
+    ${tw`pointer-events-none`}
 
     > li > a {
-      pointer-events: none;
+      ${tw`pointer-events-none`}
     }
 
     > li > button {
-      pointer-events: none;
+      ${tw`pointer-events-none`}
     }
   }
 `
 
 export const SideNavListItem = styled(motion.li)`
-  padding: 1rem;
+  ${tw`p-2`}
 `
 
-export const SideNavLink = styled(Link)`
+export const SideNavLink = styled(NextLink)`
+  ${tw`no-underline py-0 px-2 text-lg font-light cursor-pointer`}
   color: ${variables.primary};
-  text-decoration: none;
-  padding: 0 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 300;
-  cursor: pointer;
   pointer-events: fill;
 `
 
 export const SideNavLngBtn = styled.button`
   color: ${variables.primary};
-  padding: 0 0.5rem;
-  transition: 0.5s;
-  font-weight: 300;
-  font-size: 1.15rem;
-  padding-bottom: 2px;
   pointer-events: fill;
+  ${tw`px-2 pb-1 duration-500 text-sm font-light`}
 
   &.active {
     border-bottom: solid 2px ${variables.primary};
-    padding-bottom: 0;
+    ${tw`pb-0`}
   }
 `

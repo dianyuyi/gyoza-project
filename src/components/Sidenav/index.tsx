@@ -2,10 +2,7 @@ import React, { useRef } from 'react'
 import { useDimensions } from 'src/utils/useDimensions'
 import { Navigation } from './Navigation'
 import { MenuToggle } from './MenuToggle'
-import { NextLink } from 'src/components/link'
-import { SideNav, SiderBg, SideNavLogo } from './styled'
-import NavLogo from 'src/assets/image/icon.png'
-import Image from 'next/image'
+import { SideNav, SiderBg } from './styled'
 
 const sidebar = {
   open: (height = 800) => ({
@@ -17,8 +14,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(24px at 90vw 36px)',
-    // clipPath: 'polygon(80% 0%, 100% 0%, 100% 80px, 80% 80px)',
+    clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
     transition: {
       delay: 0.5,
       type: 'spring',
@@ -42,11 +38,6 @@ const SideNavbar = () => {
       ref={containerRef}
     >
       <SiderBg variants={sidebar} />
-      <SideNavLogo>
-        <NextLink href="/" onClick={() => setIsSideOpen(!isSideOpen)}>
-          <Image src={NavLogo} alt="loxi" width={20} height={20} />
-        </NextLink>
-      </SideNavLogo>
       <Navigation isSideOpen={isSideOpen} toggle={() => setIsSideOpen(!isSideOpen)} />
       <MenuToggle toggle={() => setIsSideOpen(!isSideOpen)} />
     </SideNav>

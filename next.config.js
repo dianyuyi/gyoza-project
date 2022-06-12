@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   trailingSlash: true,
-  reactStrictMode: true,
+  reactStrictMode: false,
   dangerouslyAllowSVG: true,
   images: {
     domains: [

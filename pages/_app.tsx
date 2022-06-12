@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 import { AnimatePresence } from 'framer-motion'
@@ -8,17 +8,18 @@ import GlobalStyles from 'src/styles/GlobalStyles'
 import Header from 'src/components/header'
 import Footer from 'src/components/footer'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const window: any
 
 export function reportWebVitals({ id, name, label, value }: NextWebVitalsMetric): void {
-  // window.gtag('event', name, {
-  //   event_category: label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
-  //   value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
-  //   event_label: id, // id unique to current page load
-  //   non_interaction: true, // avoids affecting bounce rate.
-  // })
+  window.gtag('event', name, {
+    event_category: label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
+    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    event_label: id, // id unique to current page load
+    non_interaction: true, // avoids affecting bounce rate.
+  })
 }
-const App: FC<AppProps> = ({ Component, pageProps, router }) => {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   // const url = `https://wallis.dev${router.route}`
 
   return (
