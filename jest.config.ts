@@ -6,6 +6,13 @@ const createJestConfig = NextJest({
 
 const customJestConfig = {
   preset: 'ts-jest',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.json',
+      babelConfig: '.babelrc.js',
+      useESM: true,
+    },
+  },
   setupFiles: ['raf/polyfill'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],

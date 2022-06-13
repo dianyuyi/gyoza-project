@@ -4,6 +4,7 @@ import { NextPage } from 'next'
 import Sidenav from 'src/components/sidenav'
 import Layout from 'src/components/layout'
 import Home from 'src/components/home'
+import About from 'src/components/about'
 
 interface Props {
   sheetData: SheetGlobal.ProductItems | null
@@ -22,6 +23,7 @@ const Index: NextPage<Props> = ({ sheetData }: Props) => {
       <Sidenav />
       <main>
         <Home />
+        <About />
       </main>
       <p>{JSON.stringify(sheetData)}</p>
     </Layout>
