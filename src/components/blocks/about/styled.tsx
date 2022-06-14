@@ -1,8 +1,9 @@
 import tw, { styled } from 'twin.macro'
 import { up } from 'styled-breakpoints'
+import { HorizonTitle } from 'src/components/title'
 
 export const Block = styled.section`
-  ${tw`mt-0 pt-0 relative pb-8`}
+  ${tw`mt-0 pt-0 relative mt-12 pb-16`}
 
   ${up('md')} {
     margin-top: -16vw;
@@ -11,7 +12,7 @@ export const Block = styled.section`
 `
 
 export const ContentWrapper = styled.div`
-  ${tw`bg-white flex flex-col items-center`}
+  ${tw`bg-white flex flex-col items-center md:flex-row`}
 `
 
 export const ImageContent = styled.div`
@@ -19,16 +20,11 @@ export const ImageContent = styled.div`
 `
 
 export const TextContent = styled.div`
-  ${tw`w-auto box-border px-[10vw] pt-[4vh] pb-[12vh]`}
+  ${tw`w-auto box-border px-[10vw] py-[16vh]`}
 `
 
-export const BlockTitle = styled.h2`
-  ${tw`pl-12 text-lg tracking-wide absolute`}
-
-  &:before {
-    content: '';
-    ${tw`absolute block w-12 h-px bg-[#C5CBD1] top-1/2 left-0`}
-  }
+export const BlockTitle = styled(HorizonTitle)`
+  ${tw`pl-12`}
 `
 
 export const MainContext = styled.div`

@@ -19,7 +19,6 @@ const About: FC = () => {
     <Block>
       <ContentWrapper>
         <ImageContent>
-          {/* <Parallax clampFinal> */}
           <ResponsiveImage
             src="https://images.unsplash.com/photo-1589047133481-02b4a5327d89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
             alt=""
@@ -27,9 +26,8 @@ const About: FC = () => {
             height={240}
             objectFit="cover"
           />
-          {/* </Parallax> */}
         </ImageContent>
-        <Parallax clampFinal>
+        <Parallax offset={40}>
           <TextContent>
             <BlockTitle>緣起</BlockTitle>
             <MainContext>

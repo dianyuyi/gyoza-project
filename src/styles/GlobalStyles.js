@@ -14,6 +14,11 @@ const CustomStyles = createGlobalStyle`
     line-break: normal;
     word-wrap: break-word;
   }
+
+  ::selection {
+    color: #fff;
+    background-color: #b59464;
+  }
 `
 
 const GlobalStyles = () => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ServerStyleSheet } from 'styled-components'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import Meta from 'src/components/Meta'
+import Meta from 'src/components/meta'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

@@ -1,7 +1,14 @@
-import { styled } from 'twin.macro'
+import tw, { styled } from 'twin.macro'
 
-export const Title = styled.h2`
-  margin-top: 25px;
-  margin-bottom: 15px;
-  font-size: 30px;
+export const VerticalTitle = styled.h2`
+  ${tw`text-lg leading-8 tracking-[.5rem] vertical-rl`}
+`
+
+export const HorizonTitle = styled.h2`
+  ${tw`text-lg tracking-widest absolute`}
+
+  &:before {
+    content: '';
+    ${tw`absolute block w-12 h-px bg-[#C5CBD1] top-[calc(50% + 0.125rem)] left-0`}
+  }
 `

@@ -5,8 +5,8 @@ import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 
 import GlobalStyles from 'src/styles/GlobalStyles'
-import Header from 'src/components/header'
-import Footer from 'src/components/footer'
+import Header from 'src/components/blocks/header'
+import Footer from 'src/components/blocks/footer'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const window: any

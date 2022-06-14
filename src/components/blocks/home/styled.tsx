@@ -33,7 +33,7 @@ export const RightWrapper = styled.div`
 `
 
 export const BottomIntro = styled.h2`
-  ${tw`absolute right-8 bottom-12 text-sm vertical-rl`}
+  ${tw`absolute right-8 bottom-0 text-sm vertical-rl z-50`}
 `
 
 export const IntroSentence = styled.p`
