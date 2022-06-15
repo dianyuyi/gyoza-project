@@ -4,7 +4,7 @@ export const VerticalTitle = styled.h2`
   ${tw`text-lg leading-8 tracking-[.5rem] vertical-rl`}
 `
 
-export const HorizonTitle = styled.h2`
+export const HorizontalTitle = styled.h2`
   ${tw`text-lg tracking-widest absolute`}
 
   &:before {

@@ -11,16 +11,20 @@ import {
   MoreLink,
 } from './styled'
 
-export const Product: FC = () => {
+interface ProductProps {
+  product: SheetGlobal.ProductItem | null
+}
+
+export const Product: FC<ProductProps> = ({ product }) => {
   return (
     <ProductContainer>
       <ImageContainer>
-        <NextLink href="/">
-          <ProductName>蔬菜清湯</ProductName>
+        <NextLink href={`/${product.group}`}>
+          <ProductName>{product.name}</ProductName>
           <Figure>
             <ResponsiveImage
-              src="https://images.unsplash.com/photo-1625937712842-061738bb1e2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1043&q=80"
-              alt=""
+              src={product.image}
+              alt={`image-${product.name}`}
               width={300}
               height={200}
               objectFit="cover"
@@ -29,8 +33,8 @@ export const Product: FC = () => {
         </NextLink>
       </ImageContainer>
       <TextContainer>
-        <Title>清淡調味，減輕腸胃負擔</Title>
-        <MoreLink href="/" />
+        <Title>{product.description}</Title>
+        <MoreLink href={`/${product.id}`} />
       </TextContainer>
     </ProductContainer>
   )

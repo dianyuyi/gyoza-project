@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro'
 import { up } from 'styled-breakpoints'
 
-import { VerticalTitle, HorizonTitle } from 'src/components/title'
+import { VerticalTitle, HorizontalTitle } from 'src/components/title'
 import { ViewMoreLink } from 'src/components/link'
 
 export const Block = styled.section`
@@ -19,7 +19,7 @@ export const TitleWrapper = styled.div`
 export const Title = styled(VerticalTitle)`
   ${tw`ml-[10vw]`}
 `
-export const Subtitle = styled(HorizonTitle)`
+export const Subtitle = styled(HorizontalTitle)`
   ${tw`top-0 right-[16vw] pl-12`}
 `
 

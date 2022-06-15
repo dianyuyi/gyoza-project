@@ -1,6 +1,6 @@
 import tw, { styled } from 'twin.macro'
 import { up } from 'styled-breakpoints'
-import { HorizonTitle } from 'src/components/title'
+import { HorizontalTitle } from 'src/components/title'
 
 export const Block = styled.section`
   ${tw`mt-0 pt-0 relative mt-12 pb-16`}
@@ -23,7 +23,7 @@ export const TextContent = styled.div`
   ${tw`w-auto box-border px-[10vw] py-[16vh]`}
 `
 
-export const BlockTitle = styled(HorizonTitle)`
+export const BlockTitle = styled(HorizontalTitle)`
   ${tw`pl-12`}
 `
 
