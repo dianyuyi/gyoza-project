@@ -12,7 +12,7 @@ export const Block = styled.section`
 `
 
 export const ContentWrapper = styled.div`
-  ${tw`bg-white flex flex-col items-center md:flex-row`}
+  ${tw`bg-white flex flex-col items-center md:flex-row lg:py-[16vh]`}
 `
 
 export const ImageContent = styled.div`
@@ -20,7 +20,7 @@ export const ImageContent = styled.div`
 `
 
 export const TextContent = styled.div`
-  ${tw`w-auto box-border px-[10vw] py-[16vh]`}
+  ${tw`w-auto box-border px-[10vw] py-[16vh] md:py-[24vh]`}
 `
 
 export const BlockTitle = styled(HorizontalTitle)`
@@ -33,5 +33,5 @@ export const MainContext = styled.div`
 `
 
 export const SubContext = styled.div`
-  ${tw`mt-4 text-xs tracking-wider	leading-6`}
+  ${tw`mt-4 text-xs tracking-wider leading-6`}
 `

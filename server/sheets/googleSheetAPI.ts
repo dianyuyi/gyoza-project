@@ -1,11 +1,7 @@
 import { google } from 'googleapis'
 import getSheetFormat from 'src/utils/getSheetFormat'
 
-type Props = {
-  sheetName?: string
-}
-
-export async function getSheetList({ sheetName }: Props) {
+export async function getSheetList(sheetName: string) {
   try {
     const target = ['https://www.googleapis.com/auth/spreadsheets.readonly']
     const jwt = new google.auth.JWT(
@@ -24,6 +20,7 @@ export async function getSheetList({ sheetName }: Props) {
     const rows = response.data.values
     if (rows.length) {
       const data = getSheetFormat({ sheetName, rows })
+
       return data
     }
   } catch (err) {

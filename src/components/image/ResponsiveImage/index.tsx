@@ -2,16 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import { Box } from './styled'
 
-interface Props {
-  alt: string
-  src: string
-  width: number
-  height: number
-  objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  quality?: number
-}
-
-export const ResponsiveImage: FC<Props> = ({
+export const ResponsiveImage = ({
   alt,
   src,
   width,
@@ -19,7 +10,7 @@ export const ResponsiveImage: FC<Props> = ({
   objectFit = 'none',
   quality = 75,
   ...restProps
-}) => {
+}: ImageGlobal.ResponsiveProps): JSX.Element => {
   return (
     <Box>
       <Image

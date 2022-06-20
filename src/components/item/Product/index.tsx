@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { NextLink } from 'src/components/link'
-import { FillImage, ResponsiveImage } from 'src/components/image'
+import { ResponsiveImage } from 'src/components/image'
 import {
   ProductContainer,
   ImageContainer,
@@ -12,14 +12,14 @@ import {
 } from './styled'
 
 interface ProductProps {
-  product: SheetGlobal.ProductItem | null
+  product: SheetGlobal.Product | null
 }
 
-export const Product: FC<ProductProps> = ({ product }) => {
+export const Product = ({ product }: ProductProps): JSX.Element => {
   return (
     <ProductContainer>
       <ImageContainer>
-        <NextLink href={`/${product.group}`}>
+        <NextLink href={`/product/${product.id}`}>
           <ProductName>{product.name}</ProductName>
           <Figure>
             <ResponsiveImage
@@ -33,8 +33,8 @@ export const Product: FC<ProductProps> = ({ product }) => {
         </NextLink>
       </ImageContainer>
       <TextContainer>
-        <Title>{product.description}</Title>
-        <MoreLink href={`/${product.id}`} />
+        <Title>{product.description.substring(0, 15)}</Title>
+        <MoreLink href={`/product/${product.id}`} />
       </TextContainer>
     </ProductContainer>
   )

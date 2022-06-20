@@ -6,24 +6,12 @@ import { Product } from 'src/components/item'
 import Parallax from 'src/components/parallax'
 import { Block, TitleWrapper, Title, Subtitle, MoreLink, ContentWrapper } from './styled'
 
-interface Props {
-  products: SheetGlobal.ProductItems | null
+interface HotProductsProps {
+  products: SheetGlobal.Products | null
 }
 
-const testData = [
-  {
-    group: 'soup',
-    id: 'g1',
-    name: '蔬菜清湯',
-    note: '素',
-    price: 100,
-    image:
-      'https://images.unsplash.com/photo-1625937712842-061738bb1e2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1043&q=80',
-    description: '清淡調味，減輕腸胃負擔',
-  },
-]
-
-const HotProducts: FC<Props> = ({ products = testData }) => {
+const HotProducts = ({ products }: HotProductsProps): JSX.Element => {
+  const hotProducts = products.filter((item) => item.hot === 'true')
   return (
     <Block>
       <TitleWrapper>
@@ -32,7 +20,7 @@ const HotProducts: FC<Props> = ({ products = testData }) => {
         <MoreLink href="/about" />
       </TitleWrapper>
       <ContentWrapper>
-        {products.map((product) => (
+        {hotProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ContentWrapper>

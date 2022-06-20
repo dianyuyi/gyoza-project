@@ -3,7 +3,7 @@ import { ViewMoreLink } from 'src/components/link'
 import { VerticalTitle } from 'src/components/title'
 
 export const ProductContainer = styled.div`
-  ${tw`flex flex-col justify-between items-center py-[16vh] mx-auto`}
+  ${tw`flex flex-col justify-between items-center py-[8vh] mx-auto md:py-0 lg:flex-row`}
 `
 
 export const ImageContainer = styled.div`
@@ -15,16 +15,22 @@ export const ProductName = styled(VerticalTitle)`
 `
 
 export const Figure = styled.figure`
-  ${tw`w-full h-full min-w-[300px]`}
+  ${tw`w-full h-full min-w-[300px] md:min-w-[200px]`}
 `
 
 export const TextContainer = styled.div`
-  ${tw`w-auto mt-4`}
+  ${tw`w-auto mt-4 relative lg:ml-4`}
 `
+
 export const Title = styled.div`
-  ${tw`text-sm leading-10 tracking-wider`}
+  ${tw`text-sm leading-10 tracking-wider h-8 relative lg:w-36 lg:leading-6 lg:h-auto lg:mb-2`}
+
+  &:after {
+    content: '...';
+    ${tw`absolute -right-3 -bottom-2 lg:right-0 lg:bottom-0`}
+  }
 `
 
 export const MoreLink = styled(ViewMoreLink)`
-  ${tw`mt-2 text-sm`}
+  ${tw`mt-2 text-sm left-1/2 -translate-x-1/2`}
 `

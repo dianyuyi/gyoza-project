@@ -14,11 +14,11 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        sm: { min: '576px' },
-        md: { min: '768px' },
-        lg: { min: '992px' },
-        xl: { min: '1200px' },
-        '2xl': { min: '1400px' },
+        sm: '576px',
+        md: '768px',
+        lg: '992px',
+        xl: '1200px',
+        '2xl': '1400px',
       },
     },
   },

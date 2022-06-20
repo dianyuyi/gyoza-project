@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, ReactNode } from 'react'
+import React, { useState, useRef, useLayoutEffect, useEffect, ReactNode } from 'react'
 import { motion, useViewportScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion'
 
 // https://samuelkraft.com/blog/spring-parallax-framer-motion-guide
@@ -35,7 +35,7 @@ const Parallax = ({
   // apply a spring to ease the result
   const y = useSpring(yRange, { stiffness: 400, damping: 90 })
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current
     // save our layout measurements in a function in order to trigger
     // it both on mount and on resize

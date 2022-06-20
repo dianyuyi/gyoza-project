@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { FillImage } from 'src/components/image'
 import Parallax from 'src/components/parallax'
@@ -14,55 +14,114 @@ import {
   IntroSentence,
   IntroChar,
 } from './styled'
+import { useBreakpoints } from 'src/hook'
 
-const Home: FC = () => {
-  const twName = '好餃傲'
-  const enName = 'Gyoza, Wonton, Noodle'
-  const shortIntro = ['純手工', '精心美味烹製', '主餐點心皆美味']
+interface HomeProps {
+  store: SheetGlobal.StoreInfo | null
+  homeImages: SheetGlobal.HomeImages | null
+}
+
+const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
+  const { nameTW, nameEN, shortIntro } = store
+  const homeImageList = homeImages[0]
+  const breakpoints = useBreakpoints()
+
+  const [centerImage, setCenterImage] = useState({ width: '250px', height: '350px' })
+  const [centerImageWidth, setCenterImageWidth] = useState('250px')
+  const [centerImageHeight, setCenterImageHeight] = useState('350px')
+  useEffect(() => {
+    if (breakpoints.isUpLg) {
+      setCenterImageWidth('350px')
+      setCenterImageHeight('500px')
+      // setCenterImage({ ...centerImage,
+      //   width: '350px',
+      //   height: '500px',
+      // })
+    } else {
+      setCenterImageWidth('250px')
+      setCenterImageHeight('350px')
+      // setCenterImage({ ...centerImage,
+      //   width: '250px',
+      //   height: '350px',
+      // })
+    }
+  }, [breakpoints])
+
+  const intros = shortIntro.split(',')
+  const defaultImg =
+    'https://images.unsplash.com/photo-1612432505109-f28e7a5c351a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+
   return (
     <StoreContainer>
       <StoreName>
         <ChineseTitle>
-          {twName.split('').map((text, index) => (
+          {nameTW.split('').map((text, index) => (
             <p key={index}>{text}</p>
           ))}
         </ChineseTitle>
-        <EngTitle>{enName}</EngTitle>
+        <EngTitle>{nameEN}</EngTitle>
       </StoreName>
-      <LeftWrapper>
+      <LeftWrapper desktop={true}>
         <Parallax clampInitial>
           <FillImage
             width="200px"
             height="300px"
-            src={
-              'https://images.unsplash.com/photo-1612432505109-f28e7a5c351a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
-            }
+            src={homeImageList?.leftTop ?? defaultImg}
             alt=""
             objectFit="cover"
           />
         </Parallax>
       </LeftWrapper>
-      <CenterWrapper>
-        <Parallax offset={10}>
+      <LeftWrapper desktop={false}>
+        <Parallax clampInitial>
           <FillImage
-            width="250px"
-            height="350px"
-            src={
-              'https://images.unsplash.com/photo-1607095097076-bf0221751ed6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'
-            }
+            width="200px"
+            height="300px"
+            src={homeImageList?.leftTop ?? defaultImg}
+            alt=""
+            objectFit="cover"
+          />
+        </Parallax>
+      </LeftWrapper>
+      <CenterWrapper desktop={true}>
+        <Parallax offset={20} clampFinal>
+          <FillImage
+            width="200px"
+            height="300px"
+            src={homeImageList?.centerFront ?? defaultImg}
             alt=""
             objectFit="cover"
           />
         </Parallax>
       </CenterWrapper>
-      <RightWrapper>
+      <CenterWrapper desktop={false}>
+        <Parallax offset={40}>
+          <FillImage
+            width={centerImageWidth}
+            height={centerImageHeight}
+            src={homeImageList?.centerFront ?? defaultImg}
+            alt=""
+            objectFit="cover"
+          />
+        </Parallax>
+      </CenterWrapper>
+      <RightWrapper desktop={true}>
         <Parallax offset={30}>
           <FillImage
             width="240px"
             height="300px"
-            src={
-              'https://images.unsplash.com/photo-1562447457-579fc34967fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-            }
+            src={homeImageList?.bottomRight ?? defaultImg}
+            alt=""
+            objectFit="cover"
+          />
+        </Parallax>
+      </RightWrapper>
+      <RightWrapper desktop={false}>
+        <Parallax offset={30}>
+          <FillImage
+            width="240px"
+            height="300px"
+            src={homeImageList?.bottomRight ?? defaultImg}
             alt=""
             objectFit="cover"
           />
@@ -70,7 +129,7 @@ const Home: FC = () => {
       </RightWrapper>
       <BottomIntro>
         <Parallax offset={10}>
-          {shortIntro.map((intro, introIdx) => {
+          {intros.map((intro, introIdx) => {
             const str = intro.split('')
             return (
               <IntroSentence key={introIdx}>

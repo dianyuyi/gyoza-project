@@ -27,6 +27,7 @@ declare global {
       variant?: string
       width?: number | string
       height?: number | string
+      desktop?: boolean
     }
   }
 }
