@@ -19,7 +19,7 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
   return (
     <ProductContainer>
       <ImageContainer>
-        <NextLink href={`/product/${product.id}`}>
+        <NextLink href={`/product/${product.group}`}>
           <ProductName>{product.name}</ProductName>
           <Figure>
             <ResponsiveImage
@@ -34,7 +34,7 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
       </ImageContainer>
       <TextContainer>
         <Title>{product.description.substring(0, 15)}</Title>
-        <MoreLink href={`/product/${product.id}`} />
+        <MoreLink href={`/product/${product.group}/${product.id}`} />
       </TextContainer>
     </ProductContainer>
   )
