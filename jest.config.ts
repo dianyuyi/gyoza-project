@@ -37,11 +37,7 @@ const customJestConfig = {
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': [
-      'babel-jest',
-      'babel-plugin-styled-components',
-      { presets: ['next/babel'] },
-    ],
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
   collectCoverageFrom: [
     './{src,pages,server}/**/*.{ts,tsx,js,jsx}',
