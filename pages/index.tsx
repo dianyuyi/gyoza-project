@@ -1,11 +1,16 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
+import { useDispatch, useSelector } from 'src/redux/store'
+// import { useDispatch, useSelector } from 'react-redux'
+import { wrapper } from 'src/redux/store'
+
 import Sidenav from 'src/components/sidenav'
 import Layout from 'src/components/layout'
 import Home from 'src/components/blocks/home'
 import About from 'src/components/blocks/about'
 import HotProducts from 'src/components/blocks/hotProducts'
 import { getSheetList } from 'server/sheets/googleSheetAPI'
+// import { setStoreInfo, getStoreInfo } from 'src/redux/sheet/storeInfoSlice'
 
 interface Props {
   storeInfos: SheetGlobal.StoreInfos | null
@@ -14,7 +19,17 @@ interface Props {
 }
 
 const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
-  const store = storeInfos[0]
+  const dispatch = useDispatch()
+  // const storeInfoSheet = useSelector(getStoreInfo)
+  // console.log(storeInfos, storeInfoSheet)
+  // const store = storeInfos[0]
+  const store = {
+    nameTW: '000',
+    nameEN: '111',
+    shortIntro: '222',
+    phone: '333',
+    address: '444',
+  }
 
   return (
     <Layout title="Home" description={`${store.nameTW} - ${store.nameEN}`}>
@@ -22,12 +37,13 @@ const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
       <main>
         <Home store={store} homeImages={homeImages} />
         <About />
-        <HotProducts products={products} />
+        {/* <HotProducts products={products} /> */}
       </main>
     </Layout>
   )
 }
 
+// export const getServerSideProps = wrapper.getServerSideProps(store => async () => {
 export const getStaticProps: GetStaticProps = async () => {
   const storeInfos = await getSheetList('StoreInfo')
   const homeImages = await getSheetList('HomeImages')

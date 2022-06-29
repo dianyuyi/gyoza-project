@@ -33,17 +33,9 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
     if (breakpoints.isUpLg) {
       setCenterImageWidth('350px')
       setCenterImageHeight('500px')
-      // setCenterImage({ ...centerImage,
-      //   width: '350px',
-      //   height: '500px',
-      // })
     } else {
       setCenterImageWidth('250px')
       setCenterImageHeight('350px')
-      // setCenterImage({ ...centerImage,
-      //   width: '250px',
-      //   height: '350px',
-      // })
     }
   }, [breakpoints])
 

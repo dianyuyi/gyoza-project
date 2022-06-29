@@ -1,5 +1,10 @@
 import React, { FC } from 'react'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
+import { Provider } from 'react-redux'
+import { store } from 'src/redux/store'
+import { wrapper } from 'src/redux/store'
+import { SessionProvider } from 'next-auth/react'
+
 import Head from 'next/head'
 import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
@@ -25,30 +30,36 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   // const url = `https://wallis.dev${router.route}`
 
   return (
-    <>
-      <Head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-      </Head>
-      <DefaultSeo
-        titleTemplate="%s - James Wallis"
-        openGraph={{
-          type: 'website',
-          locale: 'zh_TW',
-          // url,
-          description: 'Test page',
-          site_name: 'Gyoza',
-          images: [],
-        }}
-        // canonical={url}
-      />
-      <GlobalStyles />
-      <Header />
-      <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-        <Component {...pageProps} />
-        {/* <Component {...pageProps} canonical={url} key={url} /> */}
-      </AnimatePresence>
-      <Footer />
-    </>
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        <Head>
+          <link rel="icon" href="/favicon.png" type="image/png" />
+        </Head>
+        <DefaultSeo
+          titleTemplate="%s - James Wallis"
+          openGraph={{
+            type: 'website',
+            locale: 'zh_TW',
+            // url,
+            description: 'Test page',
+            site_name: 'Gyoza',
+            images: [],
+          }}
+          // canonical={url}
+        />
+        <GlobalStyles />
+        <Header />
+        <AnimatePresence
+          exitBeforeEnter
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Component {...pageProps} />
+          {/* <Component {...pageProps} canonical={url} key={url} /> */}
+        </AnimatePresence>
+        <Footer />
+      </Provider>
+    </SessionProvider>
   )
 }
-export default App
+export default wrapper.withRedux(App)
