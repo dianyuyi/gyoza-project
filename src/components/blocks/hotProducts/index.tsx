@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import { FillImage, ResponsiveImage } from 'src/components/image'
 import { Product } from 'src/components/item'

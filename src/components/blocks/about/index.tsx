@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import { FillImage, ResponsiveImage } from 'src/components/image'
 import Parallax from 'src/components/parallax'
@@ -12,9 +12,7 @@ import {
   SubContext,
 } from './styled'
 
-const About: FC = () => {
-  const twName = '好餃傲'
-  const enName = 'Gyoza, Wonton, Noodle'
+const About = (): JSX.Element => {
   return (
     <Block>
       <ContentWrapper>

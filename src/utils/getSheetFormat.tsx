@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 interface SheetProps {
   sheetName?: string
-  rows?: Array<string | number>
+  rows?: Array<string | number | any>
 }
 
 const getSheetFormat = ({ sheetName, rows }: SheetProps) => {

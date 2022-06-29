@@ -27,10 +27,10 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
       </Head>
       <DefaultSeo
-        titleTemplate="%s - James Wallis"
+        titleTemplate="Gyoza"
         openGraph={{
           type: 'website',
           locale: 'zh_TW',

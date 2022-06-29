@@ -39,7 +39,7 @@ export const MenuItem = ({ toggle }: Props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <SideNavLink href="/about">About</SideNavLink>
+        <SideNavLink href="/menu">Menu</SideNavLink>
       </SideNavListItem>
       <SideNavListItem
         onClick={toggle}
@@ -47,15 +47,7 @@ export const MenuItem = ({ toggle }: Props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <SideNavLink href="/works">works</SideNavLink>
-      </SideNavListItem>
-      <SideNavListItem
-        onClick={toggle}
-        variants={variants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <SideNavLink href="/contact">Contact</SideNavLink>
+        <SideNavLink href="/product">Product</SideNavLink>
       </SideNavListItem>
     </>
   )
