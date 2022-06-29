@@ -50,6 +50,7 @@
     "@babel/preset-env": "^7.16.11",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@netlify/plugin-nextjs": "^4.10.0",
     "@react-native-community/eslint-config": "^3.0.1",
     "@redux-devtools/extension": "^3.2.2",
     "@reduxjs/toolkit": "^1.8.2",
