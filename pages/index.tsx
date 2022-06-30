@@ -1,11 +1,13 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
+
+import { getHomeImagesAPI, getStoreInfoAPI, getProductsAPI } from 'server/sheets/'
+
 import Sidenav from 'src/components/sidenav'
 import Layout from 'src/components/layout'
 import Home from 'src/components/blocks/home'
 import About from 'src/components/blocks/about'
 import HotProducts from 'src/components/blocks/hotProducts'
-import { getSheetList } from 'server/sheets/googleSheetAPI'
 
 interface Props {
   storeInfos: SheetGlobal.StoreInfos | null
@@ -29,9 +31,9 @@ const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const storeInfos = await getSheetList('StoreInfo')
-  const homeImages = await getSheetList('HomeImages')
-  const products = await getSheetList('Products')
+  const storeInfos = await getStoreInfoAPI()
+  const homeImages = await getHomeImagesAPI()
+  const products = await getProductsAPI()
 
   return {
     props: {

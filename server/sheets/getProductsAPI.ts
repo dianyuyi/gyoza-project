@@ -1,7 +1,6 @@
 import { google } from 'googleapis'
-import getSheetFormat from 'src/utils/getSheetFormat'
 
-export async function getSheetList(sheetName: string) {
+export async function getProductsAPI() {
   try {
     const target = ['https://www.googleapis.com/auth/spreadsheets.readonly']
     const jwt = new google.auth.JWT(
@@ -14,14 +13,23 @@ export async function getSheetList(sheetName: string) {
     const sheets = google.sheets({ version: 'v4', auth: jwt })
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: sheetName, // sheet name
+      range: 'Products', // sheet name
     })
 
     const rows = response.data.values
     if (rows.length) {
-      const data = getSheetFormat({ sheetName, rows })
-
-      return data
+      const result = rows.map((row) => ({
+        group: row[0] ?? '',
+        id: row[1] ?? '',
+        name: row[2] ?? '',
+        note: row[3] ?? '',
+        price: row[4] ?? 0,
+        image: row[5] ?? '',
+        description: row[6] ?? '',
+        hot: row[7].toLowerCase() ?? 'false',
+      }))
+      result.splice(0, 1)
+      return result
     }
   } catch (err) {
     console.log(err)

@@ -1,8 +1,9 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
+
 import Menu from 'src/components/blocks/menu'
-import { getSheetList } from 'server/sheets/googleSheetAPI'
 import Layout from 'src/components/layout'
+import { getProductsAPI } from 'server/sheets/'
 
 interface Props {
   products: SheetGlobal.Products | null
@@ -16,7 +17,7 @@ const MenuPage = ({ products }: Props): JSX.Element => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products = await getSheetList('Products')
+  const products = await getProductsAPI()
 
   return {
     props: {
