@@ -5,7 +5,7 @@ type StyleProps = {
 }
 
 export const StoreContainer = styled.section`
-  ${tw`relative w-screen h-[110vh] overflow-hidden sm:h-[130vh] lg:h-[120vh] `}
+  ${tw`relative w-screen h-[110vh] overflow-hidden sm:h-[130vh] lg:h-[120vh] bg-[#f2f0ed]`}
 `
 
 export const StoreName = styled.div`

@@ -1,20 +1,45 @@
 import React from 'react'
+import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
+
 import { NextLink } from 'src/components/link'
 import Layout from 'src/components/layout'
-import Sidenav from 'src/components/sidenav'
+import { Product } from 'src/components/item'
 
-const ProductGroup = () => {
+import { getProductsAPI, getStoreInfoAPI } from 'server/sheets/'
+
+interface Props {
+  products: SheetGlobal.Products | null
+  storeInfos: SheetGlobal.StoreInfos | null
+}
+
+const ProductGroupPage = ({ products, storeInfos }: Props): JSX.Element => {
+  const store = storeInfos[0]
   const router = useRouter()
-  const { group } = router.query
+  const { group, id } = router.query
+
+  const productGroup = products.filter((item) => item.groupEN === group)
+
   return (
-    <Layout title="Home" description={`施工實驗中...`}>
-      <Sidenav />
+    <Layout store={store} pageType={`${productGroup[0].groupTW} 全商品`}>
       <div>ProductGroup</div>
-      <div>group: {group}</div>
-      <NextLink href="/">Home</NextLink>
+      {productGroup.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </Layout>
   )
 }
 
-export default ProductGroup
+export const getServerSideProps: GetServerSideProps = async () => {
+  const products = await getProductsAPI()
+  const storeInfos = await getStoreInfoAPI()
+
+  return {
+    props: {
+      products,
+      storeInfos,
+    },
+  }
+}
+
+export default ProductGroupPage

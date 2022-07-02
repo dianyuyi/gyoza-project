@@ -8,7 +8,8 @@ declare namespace SheetGlobal {
   }
 
   interface Product {
-    group: string
+    groupTW: string
+    groupEN: string
     id: string
     name: string
     note: string

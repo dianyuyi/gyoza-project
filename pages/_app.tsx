@@ -5,8 +5,6 @@ import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
 
 import GlobalStyles from 'src/styles/GlobalStyles'
-import Header from 'src/components/blocks/header'
-import Footer from 'src/components/blocks/footer'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const window: any
@@ -42,12 +40,10 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         // canonical={url}
       />
       <GlobalStyles />
-      <Header />
       <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
         <Component {...pageProps} />
         {/* <Component {...pageProps} canonical={url} key={url} /> */}
       </AnimatePresence>
-      <Footer />
     </>
   )
 }

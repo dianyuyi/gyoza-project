@@ -4,11 +4,11 @@ import { motion } from 'framer-motion'
 import { NextLink } from 'src/components/link'
 
 export const SideNav = styled(motion.nav)`
-  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-50`}
+  ${tw`block fixed top-0 right-0 bottom-0 w-screen pointer-events-none z-[9999]`}
 `
 
 export const SideNavBtn = styled.button`
-  ${tw`outline-none border-none	select-none	absolute cursor-pointer rounded-full bg-transparent	pointer-events-auto top-2 right-[calc(10vw - 48px)] w-[50px] h-[50px]`}
+  ${tw`outline-none border-none	select-none	absolute cursor-pointer rounded-full bg-transparent	pointer-events-auto top-3.5 right-[calc(10vw - 36px)] w-[48px] h-[48px]`}
 `
 
 export const SiderBg = styled(motion.div)`

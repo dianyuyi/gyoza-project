@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next'
 
 import { getHomeImagesAPI, getStoreInfoAPI, getProductsAPI } from 'server/sheets/'
 
-import Sidenav from 'src/components/sidenav'
 import Layout from 'src/components/layout'
 import Home from 'src/components/blocks/home'
 import About from 'src/components/blocks/about'
@@ -19,8 +18,7 @@ const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
   const store = storeInfos[0]
 
   return (
-    <Layout title="Home" description={`${store.nameTW} - ${store.nameEN}`}>
-      <Sidenav />
+    <Layout store={store} pageType="首頁">
       <main>
         <Home store={store} homeImages={homeImages} />
         <About />

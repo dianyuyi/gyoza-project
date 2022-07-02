@@ -1,7 +1,6 @@
 import React from 'react'
 import { ServerStyleSheet } from 'styled-components'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import Meta from 'src/components/meta'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -32,11 +31,26 @@ export default class MyDocument extends Document {
     return (
       <Html lang="zh-TW">
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-bold.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="true"
+          />
+          <link
+            rel="preload"
+            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-heavy.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="true"
+          />
+          <link
+            rel="preload"
+            href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-medium.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="true"
           />
         </Head>
         <body>

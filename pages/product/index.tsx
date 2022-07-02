@@ -1,16 +1,39 @@
 import React from 'react'
+import { GetServerSideProps } from 'next'
 
 import Layout from 'src/components/layout'
-import Sidenav from 'src/components/sidenav'
+import { Product } from 'src/components/item'
 
-const ProductPage = () => {
+import { getProductsAPI, getStoreInfoAPI } from 'server/sheets/'
+
+interface Props {
+  products: SheetGlobal.Products | null
+  storeInfos: SheetGlobal.StoreInfos | null
+}
+
+const ProductPage = ({ products, storeInfos }: Props): JSX.Element => {
+  const store = storeInfos[0]
+
   return (
-    <Layout title="Home" description={`施工實驗中...`}>
-      <Sidenav />
-      <div>Products</div>
-      <div>testing</div>
+    <Layout store={store} pageType="商品列表">
+      <div>ProductGroup</div>
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const products = await getProductsAPI()
+  const storeInfos = await getStoreInfoAPI()
+
+  return {
+    props: {
+      products,
+      storeInfos,
+    },
+  }
 }
 
 export default ProductPage

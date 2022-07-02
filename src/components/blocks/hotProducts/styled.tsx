@@ -5,7 +5,7 @@ import { VerticalTitle, HorizontalTitle } from 'src/components/title'
 import { ViewMoreLink } from 'src/components/link'
 
 export const Block = styled.section`
-  ${tw`mt-0 pt-0 relative mt-12 pb-16`}
+  ${tw`mt-0 pt-0 relative mt-12 pb-16 `}
 `
 export const TitleWrapper = styled.div`
   ${tw`w-12 block md:w-full lg:max-w-5xl lg:mx-auto`}

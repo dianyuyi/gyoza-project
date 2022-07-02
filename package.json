@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "CI= next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -104,6 +104,7 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.5.1",
     "react-i18next": "^11.15.4",
+    "react-to-print": "^2.14.7",
     "redux-devtools-extension": "^2.13.9",
     "styled-breakpoints": "^11.1.0",
     "styled-components": "^5.3.3",

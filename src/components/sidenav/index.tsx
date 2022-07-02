@@ -14,7 +14,8 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
+    clipPath: 'circle(24px at 90vw 36px)',
+    // clipPath: `polygon(85% 0%, 100vw 0%, 100vw 60px, 85% 60px)`,
     transition: {
       delay: 0.5,
       type: 'spring',

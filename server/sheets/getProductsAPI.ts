@@ -19,14 +19,15 @@ export async function getProductsAPI() {
     const rows = response.data.values
     if (rows.length) {
       const result = rows.map((row) => ({
-        group: row[0] ?? '',
-        id: row[1] ?? '',
-        name: row[2] ?? '',
-        note: row[3] ?? '',
-        price: row[4] ?? 0,
-        image: row[5] ?? '',
-        description: row[6] ?? '',
-        hot: row[7].toLowerCase() ?? 'false',
+        groupTW: row[0] ?? '',
+        groupEN: row[1] ?? '',
+        id: row[2] ?? '',
+        name: row[3] ?? '',
+        note: row[4] ?? '',
+        price: row[5] ?? 0,
+        image: row[6] ?? '',
+        description: row[7] ?? '',
+        hot: row[8].toLowerCase() ?? 'false',
       }))
       result.splice(0, 1)
       return result
