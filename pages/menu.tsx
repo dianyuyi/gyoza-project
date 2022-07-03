@@ -16,7 +16,7 @@ const MenuPage = ({ products, storeInfos }: Props): JSX.Element => {
 
   return (
     <Layout store={store} pageType="菜單">
-      <Menu products={products} />
+      <Menu products={products} store={store} />
     </Layout>
   )
 }

@@ -12,6 +12,9 @@ module.exports = {
     },
   },
   theme: {
+    fontFamily: {
+      jinxuanlatte: ['jf-jinxuanlatte-2.0', 'sans-serif'],
+    },
     extend: {
       screens: {
         sm: '576px',
