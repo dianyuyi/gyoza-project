@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro'
 
 export const Container = styled.div`
-  ${tw`flex flex-col justify-between items-center mx-auto px-4 mb-2`}
+  ${tw`flex flex-col justify-between items-center mx-auto px-4 mb-1`}
 `
 
 export const Box = styled.div`

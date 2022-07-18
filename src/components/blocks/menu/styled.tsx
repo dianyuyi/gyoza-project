@@ -6,19 +6,19 @@ export const PrintButton = styled.button`
 
 export const PrintWrapper = styled.div`
   ${tw`m-0 p-0
-    print:w-[21cm] print:h-[29.7cm] print:p-0 print:mt-4
+    print:w-[21cm] print:h-[29.7cm] print:p-0 print:mt-0
     print:font-jinxuanlatte
   `}
 `
 
 export const Block = styled.section`
   ${tw`m-auto p-4 container
-    print:p-0 print:mt-4
+    print:p-0 print:mt-2 print:max-w-[18cm]
   `}
 `
 
 export const GridContainer = styled.div`
-  ${tw`bg-white grid grid-cols-3 gap-x-4 gap-y-12`}
+  ${tw`bg-white grid grid-cols-3 gap-x-4 gap-y-12 print:gap-y-8`}
 `
 
 export const MenuTitle = styled.h2`
