@@ -15,12 +15,10 @@ interface Props {
 }
 
 const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
-  const store = storeInfos[0]
-
   return (
-    <Layout store={store} pageType="首頁">
+    <Layout store={storeInfos[0]} pageType="首頁">
       <main>
-        <Home store={store} homeImages={homeImages} />
+        <Home store={storeInfos[0]} homeImages={homeImages} />
         <About />
         <HotProducts products={products} />
       </main>
@@ -39,6 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
       homeImages,
       products,
     },
+    revalidate: 10,
   }
 }
 

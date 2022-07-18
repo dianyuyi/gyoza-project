@@ -39,6 +39,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       products,
       storeInfos,
     },
+    revalidate: 10,
   }
 }
 
