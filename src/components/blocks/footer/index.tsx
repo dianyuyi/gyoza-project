@@ -4,13 +4,14 @@ import { StyledFooter, Container, InfoBox, Title, Text } from './styled'
 
 type Props = {
   store: SheetGlobal.StoreInfo | null
+  pageType: string
 }
 
-const Footer = ({ store }: Props): JSX.Element => {
+const Footer = ({ store, pageType }: Props): JSX.Element => {
   const { nameTW, nameEN, shortIntro, phone, address } = store
 
   return (
-    <StyledFooter>
+    <StyledFooter pageType={pageType}>
       <Container>
         <InfoBox>
           <div>

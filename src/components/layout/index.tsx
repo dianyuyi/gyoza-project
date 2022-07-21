@@ -34,9 +34,9 @@ const Layout = ({ children, store, pageType }: Props): JSX.Element => {
       px-8 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96
       h-full"
       >
-        <Header />
+        <Header pageType={pageType} />
         {children}
-        <Footer store={store} />
+        <Footer store={store} pageType={pageType} />
       </motion.main>
     </div>
   )

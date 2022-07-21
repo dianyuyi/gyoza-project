@@ -1,8 +1,13 @@
 import tw, { styled } from 'twin.macro'
 
-export const StyledFooter = styled.footer`
-  ${tw`bg-[#222] text-white mt-8`}
-`
+type FooterProps = {
+  pageType: string
+}
+
+export const StyledFooter = styled.div(({ pageType }: FooterProps) => [
+  tw`bg-[#222] text-white mt-8`,
+  pageType === '菜單' && tw`hidden sm:block`,
+])
 
 export const Container = styled.div`
   ${tw`container grid grid-cols-2 gap-4 place-content-center py-8 mx-auto`}

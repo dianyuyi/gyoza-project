@@ -57,7 +57,7 @@ const Menu = ({ products, store }: HotProductsProps): JSX.Element => {
           </GridContainer>
         </Block>
         <PrintFooter>
-          <Footer store={store} />
+          <Footer store={store} pageType="" />
         </PrintFooter>
       </PrintWrapper>
     </Fragment>
