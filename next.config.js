@@ -1,5 +1,10 @@
-/** @type {import('next').NextConfig} */
-module.exports = {
+const execSync = require('child_process').execSync
+const lastCommitCommand = 'git rev-parse HEAD'
+
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
   trailingSlash: true,
   reactStrictMode: false,
   dangerouslyAllowSVG: true,
@@ -12,4 +17,9 @@ module.exports = {
       'scontent.ftpe8-4.fna.fbcdn.net',
     ],
   },
+  async generateBuildId() {
+    return execSync(lastCommitCommand).toString().trim()
+  },
 }
+
+module.exports = nextConfig

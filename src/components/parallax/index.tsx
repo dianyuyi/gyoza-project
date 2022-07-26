@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, ReactNode } from 'react'
-import { motion, useViewportScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion'
 
 // https://samuelkraft.com/blog/spring-parallax-framer-motion-guide
 type ParallaxProps = {
@@ -20,7 +20,7 @@ const Parallax = ({
   const [clientHeight, setClientHeight] = useState(0)
   const ref = useRef(null)
 
-  const { scrollY } = useViewportScroll()
+  const { scrollY } = useScroll()
 
   // start animating our element when we've scrolled it into view
   const initial = elementTop - clientHeight
@@ -50,7 +50,6 @@ const Parallax = ({
     return () => window.removeEventListener('resize', onResize)
   }, [ref])
 
-  // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion) {
     return <>{children}</>
   }
