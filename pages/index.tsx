@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { GetStaticProps } from 'next'
+// import dynamic from 'next/dynamic'
 
 import { getHomeImagesAPI, getStoreInfoAPI, getProductsAPI } from 'server/sheets/'
+import { useHasMounted } from 'src/hook'
 
 import Layout from 'src/components/layout'
-import Home from 'src/components/blocks/home'
 import About from 'src/components/blocks/about'
+import Home from 'src/components/blocks/home'
 import HotProducts from 'src/components/blocks/hotProducts'
 
 interface Props {
@@ -14,13 +16,29 @@ interface Props {
   products: SheetGlobal.Products | null
 }
 
+// const DynamicHome = dynamic(() => import('src/components/blocks/home'), {
+//   ssr: false,
+// })
+// const DynamicHotProducts = dynamic(() => import('src/components/blocks/hotProducts'), {
+//   ssr: false,
+// })
+
 const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
+  const hasMounted = useHasMounted()
+  if (!hasMounted) {
+    return null
+  }
+
   return (
     <Layout store={storeInfos[0]} pageType="首頁">
       <main>
-        <Home store={storeInfos[0]} homeImages={homeImages} />
+        <Suspense fallback="loading...">
+          <Home store={storeInfos[0]} homeImages={homeImages} />
+        </Suspense>
         <About />
-        <HotProducts products={products} />
+        <Suspense fallback="loading...">
+          <HotProducts products={products} />
+        </Suspense>
       </main>
     </Layout>
   )

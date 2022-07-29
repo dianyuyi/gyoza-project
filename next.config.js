@@ -1,6 +1,3 @@
-const execSync = require('child_process').execSync
-const lastCommitCommand = 'git rev-parse HEAD'
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -18,7 +15,7 @@ const nextConfig = {
     ],
   },
   async generateBuildId() {
-    return execSync(lastCommitCommand).toString().trim()
+    return 'gyozaStaticId'
   },
 }
 

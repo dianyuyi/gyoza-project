@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 
 import { FillImage } from 'src/components/image'
 import Parallax from 'src/components/parallax'
@@ -54,92 +54,110 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
   return (
     <StoreContainer>
       <StoreName>
-        <ChineseTitle>
-          {nameTW.split('').map((text, index) => (
-            <p key={index}>{text}</p>
-          ))}
-        </ChineseTitle>
-        <EngTitle>{nameEN}</EngTitle>
+        <Suspense fallback="loading...">
+          <ChineseTitle>
+            {nameTW.split('').map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
+          </ChineseTitle>
+        </Suspense>
+        <Suspense fallback="loading...">
+          <EngTitle>{nameEN}</EngTitle>
+        </Suspense>
       </StoreName>
       <LeftWrapper desktop={true}>
-        <Parallax clampInitial>
-          <FillImage
-            width="200px"
-            height="300px"
-            src={homeImageList?.leftTop ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax clampInitial>
+            <FillImage
+              width="200px"
+              height="300px"
+              src={homeImageList?.leftTop ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </LeftWrapper>
       <LeftWrapper desktop={false}>
-        <Parallax clampInitial>
-          <FillImage
-            width="200px"
-            height="300px"
-            src={homeImageList?.leftTop ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax clampInitial>
+            <FillImage
+              width="200px"
+              height="300px"
+              src={homeImageList?.leftTop ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </LeftWrapper>
       <CenterWrapper desktop={true}>
-        <Parallax offset={20} clampFinal>
-          <FillImage
-            width="200px"
-            height="300px"
-            src={homeImageList?.centerFront ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax offset={20} clampFinal>
+            <FillImage
+              width="200px"
+              height="300px"
+              src={homeImageList?.centerFront ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </CenterWrapper>
       <CenterWrapper desktop={false}>
-        <Parallax offset={40}>
-          <FillImage
-            width={centerImageWidth}
-            height={centerImageHeight}
-            src={homeImageList?.centerFront ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax offset={40}>
+            <FillImage
+              width={centerImageWidth}
+              height={centerImageHeight}
+              src={homeImageList?.centerFront ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </CenterWrapper>
       <RightWrapper desktop={true}>
-        <Parallax offset={30}>
-          <FillImage
-            width="240px"
-            height="300px"
-            src={homeImageList?.bottomRight ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax offset={30}>
+            <FillImage
+              width="240px"
+              height="300px"
+              src={homeImageList?.bottomRight ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </RightWrapper>
       <RightWrapper desktop={false}>
-        <Parallax offset={30}>
-          <FillImage
-            width="240px"
-            height="300px"
-            src={homeImageList?.bottomRight ?? defaultImg}
-            alt=""
-            objectFit="cover"
-          />
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax offset={30}>
+            <FillImage
+              width="240px"
+              height="300px"
+              src={homeImageList?.bottomRight ?? defaultImg}
+              alt=""
+              objectFit="cover"
+            />
+          </Parallax>
+        </Suspense>
       </RightWrapper>
       <BottomIntro>
-        <Parallax offset={10}>
-          {intros.map((intro, introIdx) => {
-            const str = intro.split('')
-            return (
-              <IntroSentence key={introIdx}>
-                {str.map((char, charIdx) => (
-                  <IntroChar key={charIdx}>{char}</IntroChar>
-                ))}
-              </IntroSentence>
-            )
-          })}
-        </Parallax>
+        <Suspense fallback="loading...">
+          <Parallax offset={10}>
+            {intros.map((intro, introIdx) => {
+              const str = intro.split('')
+              return (
+                <IntroSentence key={introIdx}>
+                  {str.map((char, charIdx) => (
+                    <IntroChar key={charIdx}>{char}</IntroChar>
+                  ))}
+                </IntroSentence>
+              )
+            })}
+          </Parallax>
+        </Suspense>
       </BottomIntro>
     </StoreContainer>
   )

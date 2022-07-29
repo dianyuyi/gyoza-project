@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="zh-TW">
         <Head>
-          <link
+          {/* <link
             rel="preload"
             href="/fonts/jf-jinxuanlatte-2.0/jf-jinxuanlatte-2.0-bold.woff"
             as="font"
@@ -52,7 +52,7 @@ export default class MyDocument extends Document {
             type="font/woff"
             crossOrigin="anonymous"
           />
-          <link rel="stylesheet" href="/css/font.css" />
+          <link rel="stylesheet" href="/css/font.css" /> */}
         </Head>
         <body>
           <Main />
