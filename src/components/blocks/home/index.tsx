@@ -1,15 +1,15 @@
 import React, { useState, useEffect, Suspense } from 'react'
 
-import { FillImage } from 'src/components/image'
+// import { FillImage } from 'src/components/image'
 import Parallax from 'src/components/parallax'
 import {
   StoreContainer,
   StoreName,
   ChineseTitle,
   EngTitle,
-  LeftWrapper,
-  CenterWrapper,
-  RightWrapper,
+  // LeftWrapper,
+  // CenterWrapper,
+  // RightWrapper,
   BottomIntro,
   IntroSentence,
   IntroChar,
@@ -22,30 +22,24 @@ interface HomeProps {
 }
 
 const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
+  // const [renderStore, ]
   const { nameTW, nameEN, shortIntro } = store
-  const homeImageList = homeImages[0]
+  // const homeImageList = homeImages[0]
   const breakpoints = useBreakpoints()
 
-  const [centerImage, setCenterImage] = useState({ width: '250px', height: '350px' })
-  const [centerImageWidth, setCenterImageWidth] = useState('250px')
-  const [centerImageHeight, setCenterImageHeight] = useState('350px')
-  useEffect(() => {
-    if (breakpoints.isUpLg) {
-      setCenterImageWidth('350px')
-      setCenterImageHeight('500px')
-      // setCenterImage({ ...centerImage,
-      //   width: '350px',
-      //   height: '500px',
-      // })
-    } else {
-      setCenterImageWidth('250px')
-      setCenterImageHeight('350px')
-      // setCenterImage({ ...centerImage,
-      //   width: '250px',
-      //   height: '350px',
-      // })
-    }
-  }, [breakpoints])
+  // const [centerImage, setCenterImage] = useState({ width: '250px', height: '350px' })
+  // const [centerImageWidth, setCenterImageWidth] = useState('250px')
+  // const [centerImageHeight, setCenterImageHeight] = useState('350px')
+  // useEffect(() => {
+  //   if (breakpoints.isUpLg) {
+  //     setCenterImageWidth('350px')
+  //     setCenterImageHeight('500px')
+
+  //   } else {
+  //     setCenterImageWidth('250px')
+  //     setCenterImageHeight('350px')
+  //   }
+  // }, [breakpoints])
 
   const intros = shortIntro.split(',')
   const defaultImg =
@@ -65,7 +59,7 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
           <EngTitle>{nameEN}</EngTitle>
         </Suspense>
       </StoreName>
-      <LeftWrapper desktop={true}>
+      {/* <LeftWrapper desktop={true}>
         <Suspense fallback="loading...">
           <Parallax clampInitial>
             <FillImage
@@ -142,7 +136,7 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
             />
           </Parallax>
         </Suspense>
-      </RightWrapper>
+      </RightWrapper> */}
       <BottomIntro>
         <Suspense fallback="loading...">
           <Parallax offset={10}>
