@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react'
 import { GetStaticProps } from 'next'
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 
 import { getHomeImagesAPI, getStoreInfoAPI, getProductsAPI } from 'server/sheets/'
 import { useHasMounted } from 'src/hook'
 
 import Layout from 'src/components/layout'
-import About from 'src/components/blocks/about'
+// import About from 'src/components/blocks/about'
 import Home from 'src/components/blocks/home'
 import HotProducts from 'src/components/blocks/hotProducts'
 
@@ -22,6 +22,9 @@ interface Props {
 // const DynamicHotProducts = dynamic(() => import('src/components/blocks/hotProducts'), {
 //   ssr: false,
 // })
+const DynamicAbout = dynamic(() => import('src/components/blocks/about'), {
+  ssr: false,
+})
 
 const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
   const hasMounted = useHasMounted()
@@ -35,7 +38,7 @@ const Index = ({ storeInfos, homeImages, products }: Props): JSX.Element => {
         <Suspense fallback="loading...">
           <Home store={storeInfos[0]} homeImages={homeImages} />
         </Suspense>
-        <About />
+        <DynamicAbout />
         <Suspense fallback="loading...">
           <HotProducts products={products} />
         </Suspense>

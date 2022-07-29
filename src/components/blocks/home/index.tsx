@@ -1,15 +1,15 @@
 import React, { useState, useEffect, Suspense } from 'react'
 
-// import { FillImage } from 'src/components/image'
+import { FillImage } from 'src/components/image'
 import Parallax from 'src/components/parallax'
 import {
   StoreContainer,
   StoreName,
   ChineseTitle,
   EngTitle,
-  // LeftWrapper,
-  // CenterWrapper,
-  // RightWrapper,
+  LeftWrapper,
+  CenterWrapper,
+  RightWrapper,
   BottomIntro,
   IntroSentence,
   IntroChar,
@@ -22,26 +22,34 @@ interface HomeProps {
 }
 
 const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
-  // const [renderStore, ]
+  const [intros, setIntros] = useState([])
+  const [homeImageList, setHomeImageList] = useState(homeImages[0])
+  const [centerImageWidth, setCenterImageWidth] = useState('250px')
+  const [centerImageHeight, setCenterImageHeight] = useState('350px')
+
   const { nameTW, nameEN, shortIntro } = store
-  // const homeImageList = homeImages[0]
+
+  useEffect(() => {
+    const splits = shortIntro.split(',')
+    setIntros(splits)
+  }, [shortIntro])
+
+  useEffect(() => {
+    setHomeImageList(homeImages[0])
+  }, [homeImages])
+
   const breakpoints = useBreakpoints()
 
-  // const [centerImage, setCenterImage] = useState({ width: '250px', height: '350px' })
-  // const [centerImageWidth, setCenterImageWidth] = useState('250px')
-  // const [centerImageHeight, setCenterImageHeight] = useState('350px')
-  // useEffect(() => {
-  //   if (breakpoints.isUpLg) {
-  //     setCenterImageWidth('350px')
-  //     setCenterImageHeight('500px')
+  useEffect(() => {
+    if (breakpoints.isUpLg) {
+      setCenterImageWidth('350px')
+      setCenterImageHeight('500px')
+    } else {
+      setCenterImageWidth('250px')
+      setCenterImageHeight('350px')
+    }
+  }, [breakpoints])
 
-  //   } else {
-  //     setCenterImageWidth('250px')
-  //     setCenterImageHeight('350px')
-  //   }
-  // }, [breakpoints])
-
-  const intros = shortIntro.split(',')
   const defaultImg =
     'https://images.unsplash.com/photo-1612432505109-f28e7a5c351a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
 
@@ -59,7 +67,7 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
           <EngTitle>{nameEN}</EngTitle>
         </Suspense>
       </StoreName>
-      {/* <LeftWrapper desktop={true}>
+      <LeftWrapper desktop={true}>
         <Suspense fallback="loading...">
           <Parallax clampInitial>
             <FillImage
@@ -136,20 +144,21 @@ const Home = ({ store, homeImages }: HomeProps): JSX.Element => {
             />
           </Parallax>
         </Suspense>
-      </RightWrapper> */}
+      </RightWrapper>
       <BottomIntro>
         <Suspense fallback="loading...">
           <Parallax offset={10}>
-            {intros.map((intro, introIdx) => {
-              const str = intro.split('')
-              return (
-                <IntroSentence key={introIdx}>
-                  {str.map((char, charIdx) => (
-                    <IntroChar key={charIdx}>{char}</IntroChar>
-                  ))}
-                </IntroSentence>
-              )
-            })}
+            {intros.length &&
+              intros.map((intro, introIdx) => {
+                const str = intro.split('')
+                return (
+                  <IntroSentence key={introIdx}>
+                    {str.map((char, charIdx) => (
+                      <IntroChar key={charIdx}>{char}</IntroChar>
+                    ))}
+                  </IntroSentence>
+                )
+              })}
           </Parallax>
         </Suspense>
       </BottomIntro>

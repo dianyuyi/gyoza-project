@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { FillImage, ResponsiveImage } from 'src/components/image'
 import { Product } from 'src/components/item'
@@ -11,7 +11,11 @@ interface HotProductsProps {
 }
 
 const HotProducts = ({ products }: HotProductsProps): JSX.Element => {
-  const hotProducts = products.filter((item) => item.hot === 'true')
+  const [filterProducts, setFilterProducts] = useState([])
+  useEffect(() => {
+    const hotProducts = products.filter((item) => item.hot === 'true')
+    setFilterProducts(hotProducts)
+  }, [products])
   return (
     <Block>
       <TitleWrapper>
@@ -20,9 +24,8 @@ const HotProducts = ({ products }: HotProductsProps): JSX.Element => {
         <MoreLink href="/about" />
       </TitleWrapper>
       <ContentWrapper>
-        {hotProducts.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
+        {filterProducts.length &&
+          filterProducts.map((product) => <Product key={product.id} product={product} />)}
       </ContentWrapper>
     </Block>
   )
